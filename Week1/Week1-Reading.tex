@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amssymb}
+
+\begin{document}
+\title{Week 1}
+\section{Noiseless Coding}
+
+Noiseless coding is the removal of redundancy in sent information. \textbf{Compression} is a good example of this.
+Noisy coding or \textbf{error correction coding} adds redundancy to make things better. First result in noiseless coding is that the 
+\textbf{entropy} of a memoryless souce gives a lower bound on the length of a code working on the source. The \textbf{average word length} is bounded in terms of the entropy.
+
+\subsection{3.1 Noiseless Coding}
+A memoryless source using a set $W$ of source words is anything which throws these words away with prescribed probabilities.
+ie:
+\[w \in W\]
+does not depend on what came before it.
+Formally, it is a sequence: $X_1, X_2,...$ of \textbf{independent adn identically distributed random variables set on a probaility space}. These take values in a set $W$ of source words.
+\\
+An example,
+\begin{align*}
+    &P(X_i = 0) = \frac{1}{2}\\
+    &P(X_i = 1) = \frac{1}{2}
+\end{align*}
+This is an example of the stream of 0s and 1s and the distribution.
+\\
+Most general type of source ie. one with no assumptions about interdependence is a \textbf{stochastic source}. The other is a \textbf{Markov source}. Which I won't expain.
+\\
+An \textbf{alphabet} $\sum$ is just a finite set. The elements fo the set are called \textbf{characters} of the alphabet. 
+we denote $\sum_{}^{*}$ to be the set of all finite strings from characters in $\sum$.
+\end{document}
