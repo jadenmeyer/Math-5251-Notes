@@ -9,7 +9,7 @@ Noiseless coding is the removal of redundancy in sent information. \textbf{Compr
 Noisy coding or \textbf{error correction coding} adds redundancy to make things better. First result in noiseless coding is that the 
 \textbf{entropy} of a memoryless souce gives a lower bound on the length of a code working on the source. The \textbf{average word length} is bounded in terms of the entropy.
 
-\subsection{3.1 Noiseless Coding}
+\subsection*{3.1 Noiseless Coding}
 A memoryless source using a set $W$ of source words is anything which throws these words away with prescribed probabilities.
 ie:
 \[w \in W\]
@@ -27,4 +27,33 @@ Most general type of source ie. one with no assumptions about interdependence is
 \\
 An \textbf{alphabet} $\sum$ is just a finite set. The elements fo the set are called \textbf{characters} of the alphabet. 
 we denote $\sum_{}^{*}$ to be the set of all finite strings from characters in $\sum$.
+\\
+A \textbf{code} or \textbf{encoding} $f$ of a memoryless source say $S = X_1, X_2,...$ (emitting source words in a set $W$) into codeword strings over an alphabet $\sum$ is a map:
+\[f:W \rightarrow \sum_{}^{*}\]
+\subsubsection*{Example (Morse Code)}
+the alphabet here is $\sum {dot, dash}$ and the collection of 'words' $W$ can simply be the english alphabet. More commonly used words are likely to have shorter encodings.
+\subsubsection*{Example (Ascii)}
+encoding the english alphabet with numberals, punctuation, and other characters into Ascii (0-255). This is from symbol to numbers of course. Source words are just single characters rather than 'words' in the traditional sense
+for $\sum$ we have 4 options binary, octal, decimal, hexadecimal.
+\vspace{6mm}
+\\
+In this couse we will only consider \textbf{uniquely decipherable} codes. Codes in which two different messages can't be encoded the same way. This is so no information is lost in the encoding.
+This also means:
+\[f: W \rightarrow \sum_{}^{*}\]
+is injective. Think like a JPEG file format is loses some information that barely is needed. This means not uniquely decipherable.
+\begin{align*}
+    &s=s_1s_2 \dots s_m\\
+    &t=t_1t_2 \dots t_n
+\end{align*}
+in $\sum_{}^{*}$, say that $s$ is a \textbf{prefix} of $t$ if $s$ is an initial piece of $t$, ie $m \leq n$ and 
+\[t_1=s_1, t_2=s_2, \dots, t_m = s_m\]
+a code $f:W \rightarrow \sum_{}^{*}$ is an \textbf{instantaneous} or \textbf{prefix} code if for all words $w$, $w'$ in the set $W$ of source words,
+\[f(w) \text{ is not a prefix of } f(w') \text{ for } w \neq w'\]
+If a code is instantaneous, then it can be decoded without \textbf{lookahead}. This means the correct decoding of codewords can be determined without looking ahead or comes after (hence lookahead). Natural languages don't have this.
+Think blue and bluetooth blue is a prefix in bluetooth.
+\subsubsection*{Example}
+The code with words $00, 01, 110,$ and $001$ is not a prefix code. This is because the first codeword, $00$ is the prefix to the last $001$.
+\vspace{6mm}
+\\
+Prefixes are an essential part of Compression and all this. We can add an 'ending character' but that would add more data and less efficiency so these prefixes are important. 
 \end{document}
