@@ -1,0 +1,130 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{algorithm2e}
+\usepackage{multicol}
+
+
+\begin{document}
+
+\begin{center}
+    \section*{Lecture 1}
+\end{center}
+
+\noindent There are two forms of Codes
+    \vspace{2mm}
+    \begin{center}
+        \begin{tabular}{ c|c }
+            \hline
+            Noiseless Codes & Noisy Codes\\
+            \hline
+        \end{tabular}
+    \end{center}
+The goals between each are a little different.
+\begin{center}
+    Noiseless Codes\\
+    - Efficiency
+\end{center}
+\vspace{3mm}
+\begin{center}
+    Noisy Codes\\
+    -Encode "Redundancy"\\
+    -Detect and Correct Errors
+\end{center}
+
+\subsection*{ISBN Example}
+An ISBN is a number to search books. If we create an aritificial error, as opposed to searching the ENTIRE database of all books, we can use an Error-Detection code to test this.
+In this example, we use a big dot product
+
+\begin{align*}
+    & 0, 1, 3, 1, 0, 1, 9, 6, 7, 8 \\
+    & 10, 9, 8, 7, 6, 5, 4, 3, 2, 1\\
+    & 0, 9, 24, 2, 0, 5, 36, 18, 14, 8\\
+    &= 121 \equiv 0 (mod 11)
+\end{align*}
+
+\subsection*{Broken Error Detected Example}
+
+\begin{align*}
+    & 0, 3, 8, 8, 9, 7, 8, 1, 2, 7\\
+    & 10, 9, 8, 7, 6, 5, 4, 3, 2, 1\\
+    & 0, 27, 64, 56, 54, 35, 32, 3, 4, 7\\
+    &= 282 \equiv 7 (mod 11)
+\end{align*}
+
+So to explain what is happening the first line is the the ISBN. The second line is the number we multply the first line by.
+Then, we add the third line together to get the number then we do modular arithmetic. (to note the adding is done 0 + 27 + 64...)
+
+\subsection*{Section 3.1 In Class}
+Take a finite set $\mathcal{A}$. Call this an alphabet. We can then call $\mathcal{A}^*$ a set of finite sequences. A singlular finite sequence is just a \textbf{word}.
+
+\subsection*{Example of words}
+\begin{align*}
+    &\mathcal{A} = \left\{0,1\right\}\\
+    &\mathcal{A}^* = \left\{\emptyset, 0, 1, 00, 01, 11, 10, 001, \dots\right\} 
+\end{align*}
+Each word in $\mathcal{A}^*$ is finite.
+\vspace{2mm}
+Now, given a finite set $\mathcal{S}$ call it the source alphabet.
+We can now define a code
+\begin{align*}
+    \text{\textbf{Code}: a function st.}\\
+    f:\mathcal{S} \rightarrow \mathcal{A}^*
+\end{align*}
+
+\subsection*{Example of a code}
+Let $\mathcal{S}$ be the set of spoken English words.
+Let $\mathcal{A}^*$ be the set of words in the alphabet: $\left\{A,B,\dots,Z\right\}$
+The code function is then:
+\begin{align*}
+    &\mathcal{S} = \left\{\text{Spoken English}\right\}\\
+    &\downarrow \text{f = spelling (encoding)}\\
+    &\mathcal{A}^* = \left\{\text{words in} \left\{A,B,\dots,Z\right\}\right\}
+\end{align*}
+
+Now what is the image of a code? Take $e$ as the set of code word, then
+\[e = f(S)\]
+
+Now, let's define a message:
+We can look at sequences in $\mathcal{S}$ and we call this set $\mathcal{S}^*$. So a message:
+\begin{align*}
+    &\text{\textbf{Message:}}\\
+    &\text{A sequence in } \mathcal{S}^* \text{ where a word in the source alphabet gets encoded}\\
+    &f^*: \mathcal{S}^* \rightarrow \mathcal{A}^*
+\end{align*}
+You can think of this like: "Given a message get a string in $\mathcal{A}^*$. This is where concatenation rears its head.
+\[f^*(S_1,S_2,\dots,S_n) = f(S_1)f(S_2) \dots f(S_n)\]
+\subsection*{Example of Concatenation}
+\begin{align*}
+    S = \left\{A,B,C,D,E\right\}\\
+    A = \left\{0,1,2\right\}
+\end{align*}
+Our message is $ABCDE \in \mathcal{S}^*$
+so we create a mapping like:
+
+\begin{align*}
+    A \mapsto 0\\
+    B \mapsto 1\\
+    C \mapsto 20\\
+    D \mapsto 21\\
+    E \mapsto 22\\
+\end{align*}
+
+Which means:
+\[f^*(ABCDE) = 01202122 \in \mathcal{A}^*\]
+
+Now, let's define uniquely decipherable
+
+\begin{align*}
+    &\text{Uniquely Decipherable}\\
+    &\text{a code is UD if:}\\
+    &f^*:\mathcal{S}^* \rightarrow \mathcal{A}^*\\
+    &\text{is injective}
+\end{align*}
+
+\underbar{Small Remark} for this, it requires that f is injective but it is not always enough. Think of morse code and how T is $"\_ \_"$ and O is $"\_ \_ \_"$. If we have OOT how we know its 4 Ts or something else? These can't be uniquely decipherable because multiple things exist.
+\end{document}
