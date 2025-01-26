@@ -1,0 +1,55 @@
+\documentclass[a4paper, 11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{algorithm2e}
+\usepackage{multicol}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{remark}{Remark}
+
+\begin{document}
+\section*{3.2 Kraft and McMillan Inequalities}
+    \indent{} \textbf{length} is simply the number of characters in a string given an alphabet ($\mathcal{A}$).
+    given a set $\mathcal{S}$ with the encoding: $f:\mathcal{S}\rightarrow \mathcal{A}^*$. The set of word lengths then denoted as:
+    \[\left\{length(f(\mathcal{S})) : s \in \mathcal{S}\right\}\]
+
+    \vspace{3mm}
+
+\begin{theorem}[Kraft's Inequality]
+    Let the set $\mathcal{S}$ of source words have $m$ elements. Then, let the encoding alphabet $\mathcal{A}$ have $n$ characters.
+    A condition that there exists an \textbf{instantaneous uniquely decipherable} code $f:\mathcal{S} \rightarrow \mathcal{A}^*$ with lengths
+    $\ell_1, \ell_2, \dots, \ell_3$ is:
+    \begin{align}
+        \sum_{i=1}^{m} \frac{1}{n^{\ell_i}} \leq 1
+    \end{align}
+\end{theorem}
+
+\begin{theorem}[Mcmillan's Inequality]
+    Let the set $\mathcal{S}$ of source words have $m$ elements. Then, let the encoding alphabet $\mathcal{A}$ have $n$ characters.
+    A condition that there exists a \textbf{uniquely decipherable} code $f:\mathcal{S} \rightarrow \mathcal{A}^*$ with lengths
+    $\ell_1, \ell_2, \dots, \ell_3$ is:
+    \begin{align}
+        \sum_{i=1}^{m} \frac{1}{n^{\ell_i}} \leq 1
+    \end{align}
+\end{theorem}
+
+\begin{corollary}
+    If there is a uniquely decipherable code with given word lengths, then there is an \emph{instantaneous} (uniquely decipherable) code with those word lengths.
+\end{corollary}
+
+\begin{remark}
+    The Inequalities give absolute limits on the size of the encoding words necessary to encode a 'vocabulary' $\mathcal{S}$ of source words with a certain size. These are independent of any probablistic considerations.
+\end{remark}
+
+\indent{} There is a proof involved in this, but I have omitted it because I don't want to deal with it. That being said, since \emph{any} uniquely decipherable code must satisfy the Inequality, an \emph{instantaneous} one should as well.
+
+\section*{3.3 Noiseless Coding Theorem}
+
+\end{document}
